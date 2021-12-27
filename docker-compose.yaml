@@ -1,0 +1,21 @@
+# docker-compose.yaml
+version: "3.7"
+
+services:
+  wallet-trans:
+    container_name: wallet-trans
+    image: sakhamoori/wallet-trans:dev
+    build:
+      context: .
+      target: dev
+    volumes:
+      - .:/app
+    ports:
+      - "5000:5000"
+      - "2345:2345"
+    networks:
+      - wallet-trans-network
+
+networks:
+  wallet-trans-network:
+    name: wallet-trans-network
